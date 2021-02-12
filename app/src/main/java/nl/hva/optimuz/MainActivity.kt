@@ -26,13 +26,5 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
-        // Wijzing naar button
-        val testBtn = findViewById(R.id.testBtn) as Button
-        // hier on click
-        testBtn.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Optimuz says:'Hello world!'", Toast.LENGTH_SHORT).show()
-        }
-
-
     }
 }
