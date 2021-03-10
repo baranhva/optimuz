@@ -3,6 +3,7 @@ package nl.hva.optimuz
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -15,61 +16,31 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import nl.hva.optimuz.ui.dashboard.DashboardFragment
 
 class MainActivity : AppCompatActivity() {
-
-    private var views = listOf<View>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings))
+//        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_login))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        val loginButton = findViewById<Button>(R.id.login_button)
-        val switchRegisterButton = findViewById<Button>(R.id.switch_to_register)
-        val loginView = findViewById<TableLayout>(R.id.loginView)
-        val registerView = findViewById<FrameLayout>(R.id.registerView)
-        val mainView = findViewById<FrameLayout>(R.id.mainView)
-        val feedback = findViewById<TextView>(R.id.feedback)
-        views = listOf(loginView, registerView, mainView)
-
-        loginButton.setOnClickListener {
-            val loginEmail = findViewById<EditText>(R.id.login_email).text.toString()
-            val loginPassword = findViewById<EditText>(R.id.login_password).text.toString()
-
-            if (loginEmail == "email" && loginPassword == "pass"){
-                switchToView(mainView)
-            }else{
-                feedback.text = "Invalid email/password combination"
-            }
-        }
-
-        switchRegisterButton.setOnClickListener {
-            switchToView(registerView)
-        }
-
+        navView.isInvisible = true
     }
 
-    private fun switchToView(v: View): Boolean{
-        if (views.contains(v)){
-            for (view in views){
-                view.isVisible(v === view)
-            }
-            findViewById<FrameLayout>(R.id.nav_view).isVisible(findViewById<FrameLayout>(R.id.mainView) === v) // toggle nav view
-            return true
-        }
-        return false
-    }
-
-    private fun View.isVisible(visible: Boolean){
-        if (visible){
-            this.isVisible = true
+    fun switchFragment(id: Int){
+        val fragmentsWithNavView = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings)
+        findNavController(R.id.nav_host_fragment).navigate(id)
+        if (fragmentsWithNavView.contains(id)){
+            findViewById<BottomNavigationView>(R.id.nav_view).isVisible = true
         }else{
-            this.isInvisible = true
+            findViewById<BottomNavigationView>(R.id.nav_view).isInvisible = true
         }
+        Log.d("tag", "test")
     }
 
     // auto close keyboard
