@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
+import nl.hva.optimuz.State
 
 
 class HomeFragment : Fragment() {
@@ -26,12 +27,16 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val main = (activity as MainActivity)
+
 
         val activity: Activity? = activity
 
         val testBtn: Button = root.findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
-            Toast.makeText(activity, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
+            State.loggedIn = false
+            main.switchFragment(R.id.navigation_login)
         }
 
         return root

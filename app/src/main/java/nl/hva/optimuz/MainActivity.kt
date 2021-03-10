@@ -3,12 +3,11 @@ package nl.hva.optimuz
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -16,9 +15,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import nl.hva.optimuz.ui.dashboard.DashboardFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
+
+    var publicFragments = listOf(R.id.navigation_login, R.id.navigation_register)
+    var privateFragments = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,18 +32,29 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_login))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        navView.isInvisible = true
+//        navView.isInvisible = true
+        if (!State.loggedIn){
+            switchFragment(R.id.navigation_login)
+        }
     }
 
     fun switchFragment(id: Int){
-        val fragmentsWithNavView = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings)
-        findNavController(R.id.nav_host_fragment).navigate(id)
-        if (fragmentsWithNavView.contains(id)){
-            findViewById<BottomNavigationView>(R.id.nav_view).isVisible = true
-        }else{
-            findViewById<BottomNavigationView>(R.id.nav_view).isInvisible = true
+
+        if (!State.loggedIn && privateFragments.contains(id)){
+            return
         }
-        Log.d("tag", "test")
+
+        findNavController(R.id.nav_host_fragment).navigate(id)
+
+        findViewById<BottomNavigationView>(R.id.nav_view).isVisible(privateFragments.contains(id))
+    }
+
+    private fun View.isVisible(visible: Boolean){
+        if (visible){
+            this.isVisible = true
+        }else{
+            this.isInvisible = true
+        }
     }
 
     // auto close keyboard
