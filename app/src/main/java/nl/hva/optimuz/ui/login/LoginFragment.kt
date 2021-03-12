@@ -13,6 +13,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
@@ -31,12 +36,13 @@ class LoginFragment : Fragment() {
             val loginEmail = root.findViewById<EditText>(R.id.login_email).text.toString()
             val loginPassword = root.findViewById<EditText>(R.id.login_password).text.toString()
 
-            if (loginEmail == "email" && loginPassword == "pass"){
-                State.loggedIn = true
-                main.switchFragment(R.id.navigation_home)
-            }else{
-                feedback.text = "Invalid email/password combination"
-            }
+            performLogin(loginEmail, loginPassword)
+//            if (loginEmail == "email" && loginPassword == "pass"){
+//                State.loggedIn = true
+//                main.switchFragment(R.id.navigation_home)
+//            }else{
+//                feedback.text = "Invalid email/password combination"
+//            }
         }
 
         switchButton.setOnClickListener {
@@ -46,5 +52,22 @@ class LoginFragment : Fragment() {
 
         return root
 
+    }
+
+    private fun performLogin(email: String, password: String) {
+        val queue = Volley.newRequestQueue(getActivity()?.applicationContext)
+        val url = Configuration.URL + "/auth/login"
+        Toast.makeText(activity, "Called", Toast.LENGTH_SHORT).show()
+        // Request a string response from the provided URL.
+        val stringRequest = StringRequest(Request.Method.GET, url,
+                { response ->
+                    Toast.makeText(activity, response, Toast.LENGTH_SHORT).show()
+                },
+                { error ->
+                    Log.e("MyActivity", "LOGIN", error)
+                    Toast.makeText(activity, "That didn't work!", Toast.LENGTH_SHORT).show()
+                })
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest)
     }
 }
