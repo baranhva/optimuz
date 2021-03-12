@@ -3,16 +3,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
-    <string name="login_email">Email</string>
-    <string name="login_password">Password</string>
     <string name="login_button">Login</string>
     <string name="login_heading">Login</string>
-    <string name="register_button">Register</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="name">Voornaam</string>
-    <string name="surname">Achternaam</string>
-    <string name="mail">E-Mailadres@xmail.nl</string>
+    <string name="first_name">Voornaam</string>
+    <string name="last_name">Achternaam</string>
+    <string name="email">Email</string>
     <string name="password">Wachtwoord</string>
-    <string name="button">Opslaan</string>
+    <string name="register_button">Register</string>
 </resources>

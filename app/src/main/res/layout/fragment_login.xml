@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/login_email"
+            android:text="@string/email"
             android:labelFor="@id/login_email"/>
 
         <EditText
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="@string/login_password"
+            android:text="@string/password"
             android:labelFor="@id/login_password"/>
 
         <EditText
