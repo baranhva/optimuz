@@ -40,7 +40,7 @@ class LoginFragment : Fragment() {
 //            if (loginEmail == "email" && loginPassword == "pass"){
 //                State.loggedIn = true
 //                main.switchFragment(R.id.navigation_home)
-//            }else{
+//            } else{
 //                feedback.text = "Invalid email/password combination"
 //            }
         }
@@ -59,9 +59,11 @@ class LoginFragment : Fragment() {
         val url = Configuration.URL + "/auth/login"
         Toast.makeText(activity, "Called", Toast.LENGTH_SHORT).show()
         // Request a string response from the provided URL.
-        val stringRequest = StringRequest(Request.Method.GET, url,
-                { response ->
-                    Toast.makeText(activity, response, Toast.LENGTH_SHORT).show()
+        val stringRequest = StringRequest(Request.Method.POST, url,
+                { token ->
+                    State.token = token
+                    State.loggedIn = true
+                    (activity as MainActivity).switchFragment(R.id.navigation_home)
                 },
                 { error ->
                     Log.e("MyActivity", "LOGIN", error)
