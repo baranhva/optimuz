@@ -36,22 +36,21 @@ class LoginFragment : Fragment() {
             val loginEmail = root.findViewById<EditText>(R.id.login_email).text.toString()
             val loginPassword = root.findViewById<EditText>(R.id.login_password).text.toString()
 
-            performLogin(loginEmail, loginPassword)
-//            if (loginEmail == "email" && loginPassword == "pass"){
-//                State.loggedIn = true
-//                main.switchFragment(R.id.navigation_home)
-//            } else{
-//                feedback.text = "Invalid email/password combination"
-//            }
+//            performLogin(loginEmail, loginPassword)
+            if (loginEmail == "email" && loginPassword == "pass"){
+                State.loggedIn = true
+                findNavController().popBackStack(R.id.navigation_login, true)
+                main.switchFragment(R.id.navigation_home)
+            } else{
+                feedback.text = "Invalid email/password combination"
+            }
         }
 
         switchButton.setOnClickListener {
             main.switchFragment(R.id.navigation_register)
         }
 
-
         return root
-
     }
 
     private fun performLogin(email: String, password: String) {
@@ -63,6 +62,7 @@ class LoginFragment : Fragment() {
                 { token ->
                     State.token = token
                     State.loggedIn = true
+                    findNavController().popBackStack()
                     (activity as MainActivity).switchFragment(R.id.navigation_home)
                 },
                 { error ->

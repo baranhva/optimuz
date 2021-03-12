@@ -21,31 +21,26 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     var publicFragments = listOf(R.id.navigation_login, R.id.navigation_register)
-    var privateFragments = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings)
+    var privateFragments = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_account)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-//        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings))
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_login))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_login, R.id.navigation_register, R.id.navigation_account))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-//        navView.isInvisible = true
         if (!State.loggedIn){
             switchFragment(R.id.navigation_login)
         }
     }
 
     fun switchFragment(id: Int){
-
         if (!State.loggedIn && privateFragments.contains(id)){
             return
         }
-
         findNavController(R.id.nav_host_fragment).navigate(id)
-
         findViewById<BottomNavigationView>(R.id.nav_view).isVisible(privateFragments.contains(id))
     }
 

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
@@ -35,9 +36,7 @@ class HomeFragment : Fragment() {
 
         val testBtn: Button = root.findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
-//            Toast.makeText(activity, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
-            State.loggedIn = false
-            main.switchFragment(R.id.navigation_login)
+            Toast.makeText(activity, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
         }
 
         return root
