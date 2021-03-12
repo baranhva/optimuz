@@ -31,11 +31,8 @@ class HomeFragment : Fragment() {
         val main = (activity as MainActivity)
 
 
-        val activity: Activity? = activity
-
         val testBtn: Button = root.findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
-//            Toast.makeText(activity, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
             State.loggedIn = false
             main.switchFragment(R.id.navigation_login)
         }

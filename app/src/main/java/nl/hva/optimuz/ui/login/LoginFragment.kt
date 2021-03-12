@@ -57,7 +57,7 @@ class LoginFragment : Fragment() {
         body.put("email", email)
         body.put("password", password)
 
-        val postRequest: JsonObjectRequest = object: JsonObjectRequest(Request.Method.POST, url, body,
+        val postRequest = JsonObjectRequest(Request.Method.POST, url, body,
                 { response ->
                     State.token = response.getString("token")
                     State.loggedIn = true
