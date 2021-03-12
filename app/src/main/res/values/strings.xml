@@ -10,5 +10,5 @@
     <string name="last_name">Achternaam</string>
     <string name="email">Email</string>
     <string name="password">Wachtwoord</string>
-    <string name="register_button">Register</string>
+    <string name="register">Register</string>
 </resources>
