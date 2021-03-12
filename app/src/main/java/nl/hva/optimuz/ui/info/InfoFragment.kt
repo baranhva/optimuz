@@ -1,4 +1,4 @@
-package nl.hva.optimuz.ui.dashboard
+package nl.hva.optimuz.ui.info
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,8 +21,8 @@ class InfoFragment : Fragment() {
     ): View? {
         infoViewModel =
                 ViewModelProvider(this).get(InfoViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
+        val root = inflater.inflate(R.layout.fragment_info, container, false)
+        val textView: TextView = root.findViewById(R.id.text_info)
         infoViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
