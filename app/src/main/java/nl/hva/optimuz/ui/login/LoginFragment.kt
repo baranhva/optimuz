@@ -1,9 +1,7 @@
 package nl.hva.optimuz.ui.login
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,17 +9,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
-import nl.hva.optimuz.ui.home.HomeViewModel
+import org.json.JSONObject
 
 class LoginFragment : Fragment() {
 
@@ -57,19 +53,26 @@ class LoginFragment : Fragment() {
     private fun performLogin(email: String, password: String) {
         val queue = Volley.newRequestQueue(getActivity()?.applicationContext)
         val url = Configuration.URL + "/auth/login"
-        Toast.makeText(activity, "Called", Toast.LENGTH_SHORT).show()
-        // Request a string response from the provided URL.
-        val stringRequest = StringRequest(Request.Method.POST, url,
-                { token ->
-                    State.token = token
+        val body = JSONObject()
+        body.put("email", email)
+        body.put("password", password)
+
+        val postRequest: JsonObjectRequest = object: JsonObjectRequest(Request.Method.POST, url, body,
+                { response ->
+                    State.token = response.getString("token")
                     State.loggedIn = true
                     (activity as MainActivity).switchFragment(R.id.navigation_home)
                 },
                 { error ->
                     Log.e("MyActivity", "LOGIN", error)
                     Toast.makeText(activity, "That didn't work!", Toast.LENGTH_SHORT).show()
-                })
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest)
+                }
+        )
+
+        queue.add(postRequest)
     }
+
+
+
 }
+
