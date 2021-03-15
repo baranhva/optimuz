@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import nl.hva.optimuz.R
+import nl.hva.optimuz.ui.questionnaire_recycler.QuestionnaireRecFragment
 
 
 class HomeFragment : Fragment() {
@@ -32,10 +34,15 @@ class HomeFragment : Fragment() {
         })
 
         val activity: Activity? = activity
+        val fragment = QuestionnaireRecFragment()
 
         val testBtn: Button = root.findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
-            Toast.makeText(activity, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
+            val fragmentManager: FragmentManager = requireActivity().getSupportFragmentManager()
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(((view as ViewGroup).parent as View).id, fragment, "tag")
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
         }
 
         return root

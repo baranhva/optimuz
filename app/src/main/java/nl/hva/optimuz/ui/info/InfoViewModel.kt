@@ -1,4 +1,4 @@
-package nl.hva.optimuz.ui.dashboard
+package nl.hva.optimuz.ui.info
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

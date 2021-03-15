@@ -12,14 +12,22 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="nl.hva.optimuz.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_info"
+        android:name="nl.hva.optimuz.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info" />
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="nl.hva.optimuz.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_reminders"
+        android:name="nl.hva.optimuz.ui.reminders.RemindersFragment"
+        android:label="@string/title_reminders"
+        tools:layout="@layout/fragment_reminders" />
+
+
 </navigation>
