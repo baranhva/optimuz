@@ -30,13 +30,13 @@ class SettingsFragment : Fragment() {
         val main = (activity as MainActivity)
 
         accountButton.setOnClickListener {
-            main.switchFragment(R.id.navigation_account)
+            main.navigateToFragment(R.id.navigation_account)
         }
 
         logoutButton.setOnClickListener {
             State.loggedIn = false
             findNavController().popBackStack(R.id.navigation_settings, true) // doesnt work properly
-            main.switchFragment(R.id.navigation_login)
+            main.navigateToFragment(R.id.navigation_login)
         }
 
         return root

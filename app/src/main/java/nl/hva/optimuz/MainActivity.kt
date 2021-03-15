@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -20,28 +18,28 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    var publicFragments = listOf(R.id.navigation_login, R.id.navigation_register)
-    var privateFragments = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_account)
+    var securedFragments = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_account)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_login, R.id.navigation_register, R.id.navigation_account))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         if (!State.loggedIn){
-            switchFragment(R.id.navigation_login)
+            navigateToFragment(R.id.navigation_login)
         }
     }
 
-    fun switchFragment(id: Int){
-        if (!State.loggedIn && privateFragments.contains(id)){
+    fun navigateToFragment(id: Int){
+        if (!State.loggedIn && securedFragments.contains(id)){
             return
         }
         findNavController(R.id.nav_host_fragment).navigate(id)
-        findViewById<BottomNavigationView>(R.id.nav_view).isVisible(privateFragments.contains(id))
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navView.isVisible(securedFragments.contains(id))
     }
 
     private fun View.isVisible(visible: Boolean){

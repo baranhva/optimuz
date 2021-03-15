@@ -1,6 +1,5 @@
 package nl.hva.optimuz.ui.login
 
-import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,17 +10,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
-import nl.hva.optimuz.ui.home.HomeViewModel
 
 class LoginFragment : Fragment() {
 
@@ -40,14 +36,14 @@ class LoginFragment : Fragment() {
             if (loginEmail == "email" && loginPassword == "pass"){
                 State.loggedIn = true
                 findNavController().popBackStack(R.id.navigation_login, true)
-                main.switchFragment(R.id.navigation_home)
+                main.navigateToFragment(R.id.navigation_home)
             } else{
                 feedback.text = "Invalid email/password combination"
             }
         }
 
         switchButton.setOnClickListener {
-            main.switchFragment(R.id.navigation_register)
+            main.navigateToFragment(R.id.navigation_register)
         }
 
         return root
@@ -63,7 +59,7 @@ class LoginFragment : Fragment() {
                     State.token = token
                     State.loggedIn = true
                     findNavController().popBackStack()
-                    (activity as MainActivity).switchFragment(R.id.navigation_home)
+                    (activity as MainActivity).navigateToFragment(R.id.navigation_home)
                 },
                 { error ->
                     Log.e("MyActivity", "LOGIN", error)
