@@ -3,9 +3,11 @@ package nl.hva.optimuz
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -37,9 +39,15 @@ class MainActivity : AppCompatActivity() {
         if (!State.loggedIn && securedFragments.contains(id)){
             return
         }
+
         findNavController(R.id.nav_host_fragment).navigate(id)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.isVisible(securedFragments.contains(id))
+
+        // hide back button on login fragment
+        if (id == R.id.navigation_login){
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        }
     }
 
     private fun View.isVisible(visible: Boolean){
@@ -48,6 +56,13 @@ class MainActivity : AppCompatActivity() {
         }else{
             this.isInvisible = true
         }
+    }
+
+    // handle action bar back button
+    override fun onSupportNavigateUp(): Boolean {
+        // TODO: check where we are going // using navigateToFragment() would be nice
+        onBackPressed()
+        return true
     }
 
     // auto close keyboard

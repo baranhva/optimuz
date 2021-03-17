@@ -37,7 +37,11 @@ class LoginFragment : Fragment() {
             if (loginEmail == "email" && loginPassword == "pass"){
                 State.loggedIn = true
                 findNavController().popBackStack(R.id.navigation_login, true)
-                main.navigateToFragment(R.id.navigation_home)
+                if (true){ // TODO: if new user...
+                    main.navigateToFragment(R.id.navigation_setup)
+                } else{
+                    main.navigateToFragment(R.id.navigation_home)
+                }
             } else{
                 feedback.text = "Invalid email/password combination"
             }

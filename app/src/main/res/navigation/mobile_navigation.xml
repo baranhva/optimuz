@@ -24,16 +24,22 @@
         tools:layout="@layout/fragment_settings" />
 
     <fragment
+        android:id="@+id/navigation_register"
+        android:name="nl.hva.optimuz.ui.register.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
         android:id="@+id/navigation_login"
         android:name="nl.hva.optimuz.ui.login.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login" />
 
     <fragment
-        android:id="@+id/navigation_register"
-        android:name="nl.hva.optimuz.ui.register.RegisterFragment"
-        android:label="Register"
-        tools:layout="@layout/fragment_register" />
+        android:id="@+id/navigation_setup"
+        android:name="nl.hva.optimuz.ui.setup.SetupFragment"
+        android:label="Setup"
+        tools:layout="@layout/fragment_setup" />
 
     <fragment
         android:id="@+id/navigation_account"
