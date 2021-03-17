@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import androidx.navigation.fragment.findNavController
 import com.android.volley.toolbox.Volley
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
@@ -32,22 +33,21 @@ class LoginFragment : Fragment() {
             val loginEmail = root.findViewById<EditText>(R.id.login_email).text.toString()
             val loginPassword = root.findViewById<EditText>(R.id.login_password).text.toString()
 
-            performLogin(loginEmail, loginPassword)
-//            if (loginEmail == "email" && loginPassword == "pass"){
-//                State.loggedIn = true
-//                main.switchFragment(R.id.navigation_home)
-//            } else{
-//                feedback.text = "Invalid email/password combination"
-//            }
+//            performLogin(loginEmail, loginPassword)
+            if (loginEmail == "email" && loginPassword == "pass"){
+                State.loggedIn = true
+                findNavController().popBackStack(R.id.navigation_login, true)
+                main.navigateToFragment(R.id.navigation_home)
+            } else{
+                feedback.text = "Invalid email/password combination"
+            }
         }
 
         switchButton.setOnClickListener {
-            main.switchFragment(R.id.navigation_register)
+            main.navigateToFragment(R.id.navigation_register)
         }
 
-
         return root
-
     }
 
     private fun performLogin(email: String, password: String) {
@@ -61,7 +61,8 @@ class LoginFragment : Fragment() {
                 { response ->
                     State.token = response.getString("token")
                     State.loggedIn = true
-                    (activity as MainActivity).switchFragment(R.id.navigation_home)
+                    findNavController().popBackStack()
+                    (activity as MainActivity).navigateToFragment(R.id.navigation_home)
                 },
                 { error ->
                     Log.e("MyActivity", "LOGIN", error)
