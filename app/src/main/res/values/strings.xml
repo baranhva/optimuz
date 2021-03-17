@@ -6,12 +6,13 @@
     <string name="login_button">Login</string>
     <string name="login_heading">Login</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="first_name">Voornaam</string>
-    <string name="last_name">Achternaam</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
     <string name="email">Email</string>
-    <string name="password">Wachtwoord</string>
+    <string name="password">Password</string>
     <string name="register">Register</string>
-    <string name="button">Opslaan</string>
-    <string name="logout_button">Uitloggen</string>
-    <string name="account_button">Mijn account</string>
+    <string name="button">Save</string>
+    <string name="logout_button">Logout</string>
+    <string name="account_button">My account</string>
+    <string name="register_heading">Register</string>
 </resources>

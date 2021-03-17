@@ -36,10 +36,10 @@ class LoginFragment : Fragment() {
 //            performLogin(loginEmail, loginPassword)
             if (loginEmail == "email" && loginPassword == "pass"){
                 State.loggedIn = true
-                findNavController().popBackStack(R.id.navigation_login, true)
-                if (true){ // TODO: if new user...
+                if (true){ // if new user...
                     main.navigateToFragment(R.id.navigation_setup)
                 } else{
+                    findNavController().popBackStack(R.id.navigation_login, true)
                     main.navigateToFragment(R.id.navigation_home)
                 }
             } else{

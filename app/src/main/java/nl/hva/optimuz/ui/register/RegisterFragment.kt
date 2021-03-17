@@ -16,7 +16,6 @@ import com.android.volley.toolbox.Volley
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
-import nl.hva.optimuz.State
 import org.json.JSONObject
 
 class RegisterFragment : Fragment() {
@@ -33,14 +32,20 @@ class RegisterFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_register, container, false)
         val registerButton: Button = root.findViewById(R.id.register_button)
+        val switchButton: Button = root.findViewById(R.id.switch_to_login)
+        val main = (activity as MainActivity)
 
         registerButton.setOnClickListener {
-            val firstName = root.findViewById<EditText>(R.id.firstNameTextInput).text.toString()
-            val lastName = root.findViewById<EditText>(R.id.lastNameTextInput).text.toString()
-            val email = root.findViewById<EditText>(R.id.emailTextInput).text.toString()
-            val password = root.findViewById<EditText>(R.id.passwordTextInput).text.toString()
+            val firstName = root.findViewById<EditText>(R.id.register_first_name).text.toString()
+            val lastName = root.findViewById<EditText>(R.id.register_last_name).text.toString()
+            val email = root.findViewById<EditText>(R.id.register_email).text.toString()
+            val password = root.findViewById<EditText>(R.id.register_password).text.toString()
 
             performRegister(firstName, lastName, email, password)
+        }
+
+        switchButton.setOnClickListener{
+            main.navigateToFragment(R.id.navigation_login)
         }
 
         return root
