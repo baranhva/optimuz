@@ -29,12 +29,11 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
         val main = (activity as MainActivity)
-
-
         val testBtn: Button = root.findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
-            Toast.makeText(activity, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
+            Toast.makeText(main, "Optimuz says: 'Hello world!'", Toast.LENGTH_SHORT).show()
         }
 
         return root

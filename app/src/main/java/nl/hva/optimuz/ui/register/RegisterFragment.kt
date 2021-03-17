@@ -58,7 +58,7 @@ class RegisterFragment : Fragment() {
         val postRequest = JsonObjectRequest(Request.Method.POST, url, body,
                 { response ->
                     Toast.makeText(activity, "Successfully created!", Toast.LENGTH_SHORT).show()
-                    (activity as MainActivity).switchFragment(R.id.navigation_login)
+                    (activity as MainActivity).navigateToFragment(R.id.navigation_login)
                 },
                 { error ->
                     Log.e("MyActivity", "REGISTER", error)

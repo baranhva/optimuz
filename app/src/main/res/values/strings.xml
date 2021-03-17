@@ -12,6 +12,6 @@
     <string name="password">Wachtwoord</string>
     <string name="register">Register</string>
     <string name="button">Opslaan</string>
-    <string name="logout_button">uitloggen</string>
-    <string name="account_button">mijn account</string>
+    <string name="logout_button">Uitloggen</string>
+    <string name="account_button">Mijn account</string>
 </resources>
