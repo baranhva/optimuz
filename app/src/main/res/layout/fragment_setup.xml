@@ -24,20 +24,19 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:text="Setup Wizard"
+            android:text="Complete your account"
             android:textSize="25sp"/>
 
         <TextView
-            android:id="@+id/login_email_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:text="Name"
-            android:labelFor="@id/login_email"/>
+            android:labelFor="@id/name"/>
 
         <EditText
-            android:id="@+id/login_email"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -52,30 +51,28 @@
             android:autofillHints="" />
 
         <TextView
-            android:id="@+id/login_password_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:text="Date of Birth"
-            android:labelFor="@id/login_password"/>
+            android:labelFor="@id/date_of_birth"/>
 
         <EditText
-            android:id="@+id/login_password"
+            android:id="@+id/date_of_birth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="date|text"
+            android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="323dp" />
 
         <TextView
-            android:id="@+id/tbd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -89,13 +86,13 @@
 
             <Button
                 android:id="@+id/gender_male_button"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/ToggleButtonInactive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="10dp"
-                android:text="Male"
                 android:layout_weight="0.5"
+                android:text="Male"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -103,13 +100,13 @@
 
             <Button
                 android:id="@+id/gender_female_button"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/ToggleButtonInactive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
-                android:text="Female"
                 android:layout_weight="0.5"
+                android:text="Female"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

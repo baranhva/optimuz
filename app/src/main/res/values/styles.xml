@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ToggleButtonActive" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:backgroundTint">#5A5A5A</item>
+    </style>
+
+    <style name="ToggleButtonInactive" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/material_on_background_emphasis_medium</item>
+        <item name="android:backgroundTint">#FFF</item>
+        <item name="android:strokeColor">#5A5A5A</item>
+    </style>
+
+</resources>
