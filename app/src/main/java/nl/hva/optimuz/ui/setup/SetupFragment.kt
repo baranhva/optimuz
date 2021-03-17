@@ -1,6 +1,5 @@
 package nl.hva.optimuz.ui.setup
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,20 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
 import androidx.navigation.fragment.findNavController
 import com.airbnb.paris.Paris
-import com.android.volley.toolbox.Volley
-import nl.hva.optimuz.Configuration
-import nl.hva.optimuz.MainActivity
-import nl.hva.optimuz.R
-import nl.hva.optimuz.State
-import org.json.JSONObject
-import kotlin.properties.Delegates
+import nl.hva.optimuz.*
+import java.text.ParseException
+import java.text.SimpleDateFormat
 
 class SetupFragment : Fragment() {
 
@@ -49,12 +40,14 @@ class SetupFragment : Fragment() {
         saveButton.setOnClickListener(){
             val name = root.findViewById<EditText>(R.id.name).text.toString()
             val dateOfBirth = root.findViewById<EditText>(R.id.date_of_birth).text.toString()
-            if (name == "") feedback.text = "Please fill in your name"
-            else if (dateOfBirth == "") feedback.text = "Please fill in your date of birth"
-            else if (gender == "") feedback.text = "Please select your gender"
-            else{
+
+            val feedbackMessage = completeSetup(name, dateOfBirth, gender)
+
+            if (feedbackMessage === null){
                 findNavController().popBackStack(R.id.navigation_setup, true)
                 main.navigateToFragment(R.id.navigation_home)
+            }else{
+                feedback.text = feedbackMessage
             }
 
         }
@@ -62,9 +55,28 @@ class SetupFragment : Fragment() {
         return root
     }
 
-    private fun toggleGenderButton(activeButton: Button, inactiveButton: Button){
+    private fun toggleGenderButton(activeButton: Button, inactiveButton: Button) {
         Paris.styleBuilder(activeButton).add(R.style.ToggleButtonActive).apply()
         Paris.styleBuilder(inactiveButton).add(R.style.ToggleButtonInactive).apply()
+    }
+
+    private fun completeSetup(name: String, dateOfBirth: String, gender: String) : String? {
+
+        if (name == "") return "Please fill in your name"
+        else if (dateOfBirth == "") return "Please fill in your date of birth"
+        else if (gender == "") return "Please select your gender"
+
+        try {
+            val formattedDate = SimpleDateFormat("dd-MM-yyyy").parse(dateOfBirth)
+            Account.name = name
+            Account.dateOfBirth = formattedDate
+            Account.gender = gender
+        } catch (e: ParseException) {
+            return "Please enter a valid date of birth (xx-xx-xxxx)"
+        }
+
+        return null
+
     }
 
 
