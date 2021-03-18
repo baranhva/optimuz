@@ -16,27 +16,41 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import nl.hva.optimuz.adapater.QuestionnairesAdapter
+import nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment
+import nl.hva.optimuz.ui.questionnaire_recycler.QuestionnaireRecFragment
 
 
 class MainActivity : AppCompatActivity() {
 
-    var securedFragments = listOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings, R.id.navigation_account)
+    var securedFragments = listOf(
+        R.id.navigation_home,
+        R.id.navigation_dashboard,
+        R.id.navigation_settings,
+        R.id.navigation_account
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_settings))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_settings
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        if (!State.loggedIn){
+        if (!State.loggedIn) {
             navigateToFragment(R.id.navigation_login)
         }
     }
 
-    fun navigateToFragment(id: Int){
-        if (!State.loggedIn && securedFragments.contains(id)){
+    fun navigateToFragment(id: Int) {
+        if (!State.loggedIn && securedFragments.contains(id)) {
             return
         }
 
@@ -45,15 +59,15 @@ class MainActivity : AppCompatActivity() {
         navView.isVisible(securedFragments.contains(id))
 
         // hide back button on login fragment
-        if (id == R.id.navigation_login){
+        if (id == R.id.navigation_login) {
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
     }
 
-    private fun View.isVisible(visible: Boolean){
-        if (visible){
+    private fun View.isVisible(visible: Boolean) {
+        if (visible) {
             this.isVisible = true
-        }else{
+        } else {
             this.isInvisible = true
         }
     }

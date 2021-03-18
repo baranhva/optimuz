@@ -13,8 +13,14 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="nl.hva.optimuz.ui.info.InfoFragment"
+        android:name="nl.hva.optimuz.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="nl.hva.optimuz.ui.info.InfoFragment"
+        android:label="@string/title_info"
         tools:layout="@layout/fragment_info" />
 
     <fragment

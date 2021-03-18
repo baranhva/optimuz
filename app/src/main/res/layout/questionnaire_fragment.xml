@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.reminders.RemindersFragment"
-    android:background="@color/black">
+    tools:context=".ui.questionnaire.QuestionnaireFragment"
+    android:id="@+id/questionnaire_fragment"
+    >
 
     <TextView
+        android:id="@+id/textTestQuest"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Hello" />
