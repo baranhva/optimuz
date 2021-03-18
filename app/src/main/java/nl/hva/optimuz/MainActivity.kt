@@ -1,16 +1,26 @@
 package nl.hva.optimuz
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import nl.hva.optimuz.adapater.QuestionnairesAdapter
+import nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment
+import nl.hva.optimuz.ui.questionnaire_recycler.QuestionnaireRecFragment
 
 class MainActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +34,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_info, R.id.navigation_settings, R.id.navigation_reminders))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
-
     }
+
+
+
+
+
+
 }
