@@ -3,28 +3,27 @@ package nl.hva.optimuz
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.ActionBar
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import nl.hva.optimuz.adapater.QuestionnairesAdapter
-import nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment
-import nl.hva.optimuz.ui.questionnaire_recycler.QuestionnaireRecFragment
 
 
 class MainActivity : AppCompatActivity() {
 
     var securedFragments = listOf(
         R.id.navigation_home,
+        R.id.navigation_reminders,
         R.id.navigation_dashboard,
         R.id.navigation_settings,
         R.id.navigation_account
@@ -38,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
+                R.id.navigation_reminders,
                 R.id.navigation_dashboard,
                 R.id.navigation_settings
             )
