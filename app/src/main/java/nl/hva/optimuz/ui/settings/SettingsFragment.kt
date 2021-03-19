@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
+import nl.hva.optimuz.ui.login.LoginFragment
 
 class SettingsFragment : Fragment() {
 
@@ -34,11 +35,16 @@ class SettingsFragment : Fragment() {
         }
 
         logoutButton.setOnClickListener {
-            State.loggedIn = false
-            findNavController().popBackStack(R.id.navigation_settings, true) // doesnt work properly
-            main.navigateToFragment(R.id.navigation_login)
+            logout()
         }
 
         return root
+    }
+
+    private fun logout() {
+        State.loggedIn = false
+        findNavController().popBackStack(R.id.navigation_settings, true) // doesnt work properly
+        (activity as MainActivity).navigateToFragment(R.id.navigation_login)
+//        (activity as MainActivity).changeFragment(LoginFragment())
     }
 }

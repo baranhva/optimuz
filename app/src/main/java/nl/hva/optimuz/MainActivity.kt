@@ -64,6 +64,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    fun changeFragment(fragment: Fragment) {
+//        val frameLayout = findViewById<View>(R.id.main_frame) as FrameLayout
+//        frameLayout.removeAllViews()
+//        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+//        transaction.add(R.id.nav_view, fragment)
+//        transaction.commit()
+//    }
+
     private fun View.isVisible(visible: Boolean) {
         if (visible) {
             this.isVisible = true
