@@ -23,7 +23,6 @@ class QuestionnaireFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val qf = inflater.inflate(R.layout.questionnaire_fragment, container, false)
 
         val bundle = this.arguments
@@ -34,10 +33,7 @@ class QuestionnaireFragment : Fragment() {
 
         Toast.makeText(getActivity(), "Item $message created!!", Toast.LENGTH_SHORT).show()
 
-
         return qf
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +44,6 @@ class QuestionnaireFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(QuestionnaireViewModel::class.java)
         // TODO: Use the ViewModel
-
 
     }
 

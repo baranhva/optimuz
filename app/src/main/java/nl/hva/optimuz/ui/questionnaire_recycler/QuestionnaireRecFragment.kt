@@ -42,7 +42,6 @@ class QuestionnaireRecFragment : Fragment(), QuestionnairesAdapter.OnItemClickLi
         fragmentTransaction.replace(((view as ViewGroup).parent as View).id, fragment, "tag")
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
-
     }
 
     private lateinit var viewModel: QuestionnaireRecViewModel
