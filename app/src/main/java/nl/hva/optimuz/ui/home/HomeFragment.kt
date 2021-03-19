@@ -35,11 +35,15 @@ class HomeFragment : Fragment() {
 
         val testBtn: Button = root.findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
-            openQuestionnairePanel()
+//            openQuestionnairePanel()
         }
 
         return root
     }
+
+//    private fun openQuestionnairePanel(){
+//        (activity as MainActivity).navigateToFragment(R.id.navigation_questionnaire)
+//    }
 
     private fun openQuestionnairePanel() {
         val fragment = QuestionnaireRecFragment()
