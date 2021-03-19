@@ -48,8 +48,8 @@ class QuestionnaireRecFragment : Fragment(), QuestionnairesAdapter.OnItemClickLi
     private lateinit var viewModel: QuestionnaireRecViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.questionnaire_rec_fragment, container, false)
     }
@@ -62,9 +62,9 @@ class QuestionnaireRecFragment : Fragment(), QuestionnairesAdapter.OnItemClickLi
         val questions = listOf(Question(1, "How old are you?"))
 
         val questionnaires = listOf(
-                Questionnaire(76766764, "Health Questions", true, questions),
-                Questionnaire(27853, "Sport Questions", true, questions),
-                Questionnaire(394, "Diet Questions", false, questions)
+            Questionnaire(76766764, "Health Questions", true, questions),
+            Questionnaire(27853, "Sport Questions", true, questions),
+            Questionnaire(394, "Diet Questions", false, questions)
         )
 
         recyclerViewQuestionnaires.layoutManager = LinearLayoutManager(activity)

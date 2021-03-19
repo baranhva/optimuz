@@ -33,17 +33,21 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
-        val fragment = QuestionnaireRecFragment()
-
         val testBtn: Button = root.findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
-            val fragmentManager: FragmentManager = requireActivity().getSupportFragmentManager()
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(((view as ViewGroup).parent as View).id, fragment, "tag")
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            openQuestionnairePanel()
         }
 
         return root
+    }
+
+    private fun openQuestionnairePanel() {
+        val fragment = QuestionnaireRecFragment()
+        val fragmentManager: FragmentManager = requireActivity().getSupportFragmentManager()
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(((view as ViewGroup).parent as View).id, fragment, "tag")
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+
     }
 }
