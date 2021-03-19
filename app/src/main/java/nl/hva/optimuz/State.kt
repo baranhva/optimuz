@@ -3,6 +3,7 @@ package nl.hva.optimuz
 object State {
 
     var loggedIn: Boolean = false
-    var token: String? = null
+    var accessToken: String? = null
+    var refreshToken: String? = null
 
 }

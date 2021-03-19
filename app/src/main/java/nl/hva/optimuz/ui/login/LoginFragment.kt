@@ -22,7 +22,11 @@ import org.json.JSONObject
 
 class LoginFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val root = inflater.inflate(R.layout.fragment_login, container, false)
         val loginButton: Button = root.findViewById(R.id.login_button)
         val switchButton: Button = root.findViewById(R.id.switch_to_register)
@@ -33,18 +37,18 @@ class LoginFragment : Fragment() {
             val loginEmail = root.findViewById<EditText>(R.id.login_email).text.toString()
             val loginPassword = root.findViewById<EditText>(R.id.login_password).text.toString()
 
-//            performLogin(loginEmail, loginPassword)
-            if (loginEmail == "email" && loginPassword == "pass"){
-                State.loggedIn = true
-                if (true){ // if new user...
-                    main.navigateToFragment(R.id.navigation_setup)
-                } else{
-                    findNavController().popBackStack(R.id.navigation_login, true)
-                    main.navigateToFragment(R.id.navigation_home)
-                }
-            } else{
-                feedback.text = "Invalid email/password combination"
-            }
+            performLogin(loginEmail, loginPassword)
+//            if (loginEmail == "email" && loginPassword == "pass") {
+//                State.loggedIn = true
+//                if (true) { // if new user...
+//                    main.navigateToFragment(R.id.navigation_setup)
+//                } else {
+//                    findNavController().popBackStack(R.id.navigation_login, true)
+//                    main.navigateToFragment(R.id.navigation_home)
+//                }
+//            } else {
+//                feedback.text = "Invalid email/password combination"
+//            }
         }
 
         switchButton.setOnClickListener {
@@ -62,21 +66,21 @@ class LoginFragment : Fragment() {
         body.put("password", password)
 
         val postRequest = JsonObjectRequest(Request.Method.POST, url, body,
-                { response ->
-                    State.token = response.getString("token")
-                    State.loggedIn = true
-                    findNavController().popBackStack()
-                    (activity as MainActivity).navigateToFragment(R.id.navigation_home)
-                },
-                { error ->
-                    Log.e("MyActivity", "LOGIN", error)
-                    Toast.makeText(activity, "That didn't work!", Toast.LENGTH_SHORT).show()
-                }
+            { response ->
+                State.accessToken = response.getString("accessToken")
+                State.refreshToken = response.getString("refreshToken")
+                State.loggedIn = true
+                findNavController().popBackStack()
+                (activity as MainActivity).navigateToFragment(R.id.navigation_home)
+            },
+            { error ->
+                Log.e("MyActivity", "LOGIN", error)
+                Toast.makeText(activity, "That didn't work!", Toast.LENGTH_SHORT).show()
+            }
         )
 
         queue.add(postRequest)
     }
-
 
 
 }
