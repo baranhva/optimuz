@@ -66,9 +66,15 @@
         tools:layout="@layout/questionnaire_fragment" />
 
     <fragment
-        android:id="@+id/navigation_medicine"
-        android:name="nl.hva.optimuz.ui.medicine.MedicineFragment"
-        android:label="Medicine"
-        tools:layout="@layout/fragment_medicine" />
+        android:id="@+id/navigation_add_medicine"
+        android:name="nl.hva.optimuz.ui.medicine.AddMedicineFragment"
+        android:label="Add Medicine"
+        tools:layout="@layout/fragment_add_medicine" />
+
+    <fragment
+        android:id="@+id/navigation_medicine_overview"
+        android:name="nl.hva.optimuz.ui.medicine.MedicineOverviewFragment"
+        android:label="Medicine Overview"
+        tools:layout="@layout/fragment_medicine_overview" />
 
 </navigation>

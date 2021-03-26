@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
         }
 
         medicineButton.setOnClickListener {
-            main.navigateToFragment(R.id.navigation_medicine)
+            main.navigateToFragment(R.id.navigation_medicine_overview)
         }
 
         return root
