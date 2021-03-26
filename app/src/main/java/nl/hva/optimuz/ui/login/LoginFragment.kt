@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
             val email = root.findViewById<EditText>(R.id.login_email).text.toString()
             val password = root.findViewById<EditText>(R.id.login_password).text.toString()
 
-            performLogin(email, password)
+            performLoginWithoutBackend(email, password)
         }
 
         switchButton.setOnClickListener {
@@ -86,7 +86,7 @@ class LoginFragment : Fragment() {
 
         if (email == "email" && password == "pass") {
             State.loggedIn = true
-            if (false) { // if new user...
+            if (true) { // if new user...
                 main.navigateToFragment(R.id.navigation_setup)
             } else {
                 findNavController().popBackStack(R.id.navigation_login, true)

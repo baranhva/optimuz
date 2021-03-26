@@ -64,4 +64,11 @@
         android:name="nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment"
         android:label="Questionnaire"
         tools:layout="@layout/questionnaire_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_medicine"
+        android:name="nl.hva.optimuz.ui.medicine.MedicineFragment"
+        android:label="Medicine"
+        tools:layout="@layout/fragment_medicine" />
+
 </navigation>

@@ -52,6 +52,6 @@ class HomeFragment : Fragment() {
         fragmentTransaction.replace(((view as ViewGroup).parent as View).id, fragment, "tag")
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
-
     }
+
 }

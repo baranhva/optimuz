@@ -28,6 +28,7 @@ class SettingsFragment : Fragment() {
         })
         val accountButton: Button = root.findViewById(R.id.account_button)
         val logoutButton: Button = root.findViewById(R.id.logout_button)
+        val medicineButton: Button = root.findViewById(R.id.medicine_button)
         val main = (activity as MainActivity)
 
         accountButton.setOnClickListener {
@@ -38,6 +39,10 @@ class SettingsFragment : Fragment() {
             logout()
         }
 
+        medicineButton.setOnClickListener {
+            main.navigateToFragment(R.id.navigation_medicine)
+        }
+
         return root
     }
 
@@ -45,6 +50,5 @@ class SettingsFragment : Fragment() {
         State.loggedIn = false
         findNavController().popBackStack(R.id.navigation_settings, true) // doesnt work properly
         (activity as MainActivity).navigateToFragment(R.id.navigation_login)
-//        (activity as MainActivity).changeFragment(LoginFragment())
     }
 }
