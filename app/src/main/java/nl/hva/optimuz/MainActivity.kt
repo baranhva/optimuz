@@ -6,12 +6,9 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -23,23 +20,26 @@ class MainActivity : AppCompatActivity() {
 
     var securedFragments = listOf(
         R.id.navigation_home,
-        R.id.navigation_reminders,
-        R.id.navigation_dashboard,
-        R.id.navigation_settings,
+        R.id.navigation_medication,
+        R.id.navigation_news,
+        R.id.navigation_questionnaire,
+        R.id.navigation_profile,
         R.id.navigation_account
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
+        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
-                R.id.navigation_reminders,
-                R.id.navigation_dashboard,
-                R.id.navigation_settings
+                R.id.navigation_medication,
+                R.id.navigation_news,
+                R.id.navigation_questionnaire,
+                R.id.navigation_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findNavController(R.id.nav_host_fragment).navigate(id)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         navView.isVisible(securedFragments.contains(id))
 
         // hide back button on login fragment
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 //        val frameLayout = findViewById<View>(R.id.main_frame) as FrameLayout
 //        frameLayout.removeAllViews()
 //        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-//        transaction.add(R.id.nav_view, fragment)
+//        transaction.add(R.id.bottom_navigation, fragment)
 //        transaction.commit()
 //    }
 

@@ -15,6 +15,15 @@
     <string name="register">Register</string>
     <string name="button">Save</string>
     <string name="logout_button">Logout</string>
-    <string name="account_button">My account</string>
+    <string name="account_button">My Account</string>
     <string name="register_heading">Register</string>
+    <string name="title_medication">Medication</string>
+
+    <string name="fa_icon_areachart">&#xf1fe;</string>
+    <string name="fa_icon_piechart">&#xf200;</string>
+    <string name="fa_icon_linechart">&#xf201;</string>
+    <string name="title_news">Articles</string>
+    <string name="title_questionnaire">Questionnaire</string>
+    <string name="title_profile">Profile</string>
+
 </resources>
