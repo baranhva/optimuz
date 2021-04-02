@@ -5,76 +5,63 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="nl.hva.optimuz.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_home"-->
+<!--        android:name="nl.hva.optimuz.ui.home.HomeFragment"-->
+<!--        android:label="@string/title_home"-->
+<!--        tools:layout="@layout/fragment_home" />-->
 
-    <fragment
-        android:id="@+id/navigation_reminders"
-        android:name="nl.hva.optimuz.ui.reminders.RemindersFragment"
-        android:label="@string/title_reminders"
-        tools:layout="@layout/fragment_reminders" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_reminders"-->
+<!--        android:name="nl.hva.optimuz.ui.reminders.RemindersFragment"-->
+<!--        android:label="@string/title_reminders"-->
+<!--        tools:layout="@layout/fragment_reminders" />-->
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="nl.hva.optimuz.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_dashboard"-->
+<!--        android:name="nl.hva.optimuz.ui.dashboard.DashboardFragment"-->
+<!--        android:label="@string/title_dashboard"-->
+<!--        tools:layout="@layout/fragment_dashboard" />-->
 
-    <fragment
-        android:id="@+id/navigation_info"
-        android:name="nl.hva.optimuz.ui.info.InfoFragment"
-        android:label="@string/title_info"
-        tools:layout="@layout/fragment_info" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_info"-->
+<!--        android:name="nl.hva.optimuz.ui.info.InfoFragment"-->
+<!--        android:label="@string/title_info"-->
+<!--        tools:layout="@layout/fragment_info" />-->
 
-    <fragment
-        android:id="@+id/navigation_settings"
-        android:name="nl.hva.optimuz.ui.settings.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_settings"-->
+<!--        android:name="nl.hva.optimuz.ui.settings.SettingsFragment"-->
+<!--        android:label="@string/title_settings"-->
+<!--        tools:layout="@layout/fragment_settings" />-->
 
-    <fragment
-        android:id="@+id/navigation_register"
-        android:name="nl.hva.optimuz.ui.register.RegisterFragment"
-        android:label="Register"
-        tools:layout="@layout/fragment_register" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_register"-->
+<!--        android:name="nl.hva.optimuz.ui.register.RegisterFragment"-->
+<!--        android:label="Register"-->
+<!--        tools:layout="@layout/fragment_register" />-->
 
-    <fragment
-        android:id="@+id/navigation_login"
-        android:name="nl.hva.optimuz.ui.login.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_login"-->
+<!--        android:name="nl.hva.optimuz.ui.login.LoginFragment"-->
+<!--        android:label="Login"-->
+<!--        tools:layout="@layout/fragment_login" />-->
 
-    <fragment
-        android:id="@+id/navigation_setup"
-        android:name="nl.hva.optimuz.ui.setup.SetupFragment"
-        android:label="Setup"
-        tools:layout="@layout/fragment_setup" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_setup"-->
+<!--        android:name="nl.hva.optimuz.ui.setup.SetupFragment"-->
+<!--        android:label="Setup"-->
+<!--        tools:layout="@layout/fragment_setup" />-->
 
-    <fragment
-        android:id="@+id/navigation_account"
-        android:name="nl.hva.optimuz.ui.account.AccountFragment"
-        android:label="Account"
-        tools:layout="@layout/fragment_account" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_account"-->
+<!--        android:name="nl.hva.optimuz.ui.account.AccountFragment"-->
+<!--        android:label="Account"-->
+<!--        tools:layout="@layout/fragment_account" />-->
 
-    <fragment
-        android:id="@+id/navigation_questionnaire"
-        android:name="nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment"
-        android:label="Questionnaire"
-        tools:layout="@layout/questionnaire_fragment" />
-
-    <fragment
-        android:id="@+id/navigation_add_medicine"
-        android:name="nl.hva.optimuz.ui.medicine.AddMedicineFragment"
-        android:label="Add Medicine"
-        tools:layout="@layout/fragment_add_medicine" />
-
-    <fragment
-        android:id="@+id/navigation_medicine_overview"
-        android:name="nl.hva.optimuz.ui.medicine.MedicineOverviewFragment"
-        android:label="Medicine Overview"
-        tools:layout="@layout/fragment_medicine_overview" />
-
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_questionnaire"-->
+<!--        android:name="nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment"-->
+<!--        android:label="Questionnaire"-->
+<!--        tools:layout="@layout/questionnaire_fragment" />-->
 </navigation>

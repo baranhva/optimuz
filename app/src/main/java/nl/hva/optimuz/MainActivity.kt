@@ -4,87 +4,70 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import nl.hva.optimuz.ui.home.HomeFragment
+import nl.hva.optimuz.ui.questionnaire_recycler.QuestionnaireRecFragment
 
 
 class MainActivity : AppCompatActivity() {
 
-    var securedFragments = listOf(
-        R.id.navigation_home,
-        R.id.navigation_reminders,
-        R.id.navigation_dashboard,
-        R.id.navigation_settings,
-        R.id.navigation_account
-    )
+    private val navigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    val homeFragment = HomeFragment.newInstance()
+                    openFragment(homeFragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+//                R.id.navigation_medication -> {
+//                    openFragment(MedicationFragment.newInstance("", ""))
+//                    return@OnNavigationItemSelectedListener true
+//                }
+//                R.id.navigation_news -> {
+//                    openFragment(NewsFragment.newInstance("", ""))
+//                    return@OnNavigationItemSelectedListener true
+//                }
+                R.id.navigation_questionnaire -> {
+                    val questionnaireRecFragment = QuestionnaireRecFragment.newInstance()
+                    openFragment(questionnaireRecFragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+//                R.id.navigation_profile -> {
+//                    openFragment(ProfileFragment.newInstance("", ""))
+//                    return@OnNavigationItemSelectedListener true
+//                }
+            }
+            false
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home,
-                R.id.navigation_reminders,
-                R.id.navigation_dashboard,
-                R.id.navigation_settings
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-        if (!State.loggedIn) {
-            navigateToFragment(R.id.navigation_login)
-        }
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
+        openFragment(HomeFragment())
+//        if (!State.loggedIn) {
+//            navigateToFragment(R.id.navigation_login)
+//        }
     }
 
-    fun navigateToFragment(id: Int) {
-        if (!State.loggedIn && securedFragments.contains(id)) {
-            return
-        }
-
-        findNavController(R.id.nav_host_fragment).navigate(id)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        navView.isVisible(securedFragments.contains(id))
-
-        // hide back button on login fragment
-        if (id == R.id.navigation_login) {
-            supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        }
-    }
-
-//    fun changeFragment(fragment: Fragment) {
-//        val frameLayout = findViewById<View>(R.id.main_frame) as FrameLayout
-//        frameLayout.removeAllViews()
-//        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-//        transaction.add(R.id.nav_view, fragment)
-//        transaction.commit()
-//    }
-
-    private fun View.isVisible(visible: Boolean) {
-        if (visible) {
-            this.isVisible = true
-        } else {
-            this.isInvisible = true
-        }
+    fun openFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container_layout, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     // handle action bar back button
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        // TODO: use navigateToFragment() ?
+//        onBackPressed()
+//        return true
+//    }
 
     // auto close keyboard
     @SuppressLint("ServiceCast")

@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.airbnb.paris.Paris
 import nl.hva.optimuz.*
+import nl.hva.optimuz.ui.home.HomeFragment
+import nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
@@ -44,8 +46,9 @@ class SetupFragment : Fragment() {
             val feedbackMessage = completeSetup(name, dateOfBirth, gender)
 
             if (feedbackMessage === null){
-                findNavController().popBackStack(R.id.navigation_setup, true)
-                main.navigateToFragment(R.id.navigation_home)
+//                findNavController().popBackStack(R.id.navigation_setup, true)
+                val homeFragment = HomeFragment.newInstance()
+                main.openFragment(homeFragment)
             }else{
                 feedback.text = feedbackMessage
             }
@@ -77,6 +80,10 @@ class SetupFragment : Fragment() {
 
         return null
 
+    }
+
+    companion object {
+        fun newInstance(): SetupFragment = SetupFragment()
     }
 
 

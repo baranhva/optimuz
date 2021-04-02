@@ -1,18 +1,13 @@
-package nl.hva.optimuz.adapater
+package nl.hva.optimuz.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import nl.hva.optimuz.R
 import nl.hva.optimuz.models.Questionnaire
 import kotlinx.android.synthetic.main.recycler_questionnaires.view.*
-import nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment
-import nl.hva.optimuz.ui.questionnaire_recycler.QuestionnaireRecFragment
 
 class QuestionnairesAdapter(
     context: Context?, val questionnaires: List<Questionnaire>,

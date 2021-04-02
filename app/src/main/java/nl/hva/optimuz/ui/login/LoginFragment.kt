@@ -18,6 +18,9 @@ import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
+import nl.hva.optimuz.ui.home.HomeFragment
+import nl.hva.optimuz.ui.register.RegisterFragment
+import nl.hva.optimuz.ui.setup.SetupFragment
 import org.json.JSONObject
 
 class LoginFragment : Fragment() {
@@ -41,7 +44,8 @@ class LoginFragment : Fragment() {
         }
 
         switchButton.setOnClickListener {
-            main.navigateToFragment(R.id.navigation_register)
+            val registerFragment = RegisterFragment.newInstance()
+            main.openFragment(registerFragment)
         }
 
         return root
@@ -65,7 +69,7 @@ class LoginFragment : Fragment() {
                     State.refreshToken = response.getString("refreshToken")
                     State.loggedIn = true
                     findNavController().popBackStack()
-                    (activity as MainActivity).navigateToFragment(R.id.navigation_home)
+//                    (activity as MainActivity).navigateToFragment(R.id.navigation_home)
                     isBusyLoggingIn = false
                 },
                 { error ->
@@ -86,15 +90,21 @@ class LoginFragment : Fragment() {
 
         if (email == "email" && password == "pass") {
             State.loggedIn = true
-            if (true) { // if new user...
-                main.navigateToFragment(R.id.navigation_setup)
+            if (false) { // if new user...
+                val setupFragment = SetupFragment.newInstance()
+                main.openFragment(setupFragment)
             } else {
-                findNavController().popBackStack(R.id.navigation_login, true)
-                main.navigateToFragment(R.id.navigation_home)
+//                findNavController().popBackStack(R.id.navigation_login, true)
+                val homeFragment = HomeFragment.newInstance()
+                main.openFragment(homeFragment)
             }
         } else {
 //            feedback.text = "Invalid email/password combination"
         }
+    }
+
+    companion object {
+        fun newInstance(): LoginFragment = LoginFragment()
     }
 
 

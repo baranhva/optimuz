@@ -7,18 +7,23 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_reminders"
-        android:icon="@drawable/ic_dialog_alert_material"
-        android:title="@string/title_reminders" />
+        android:id="@+id/navigation_medication"
+        android:icon="@drawable/ic_pills"
+        android:title="@string/title_medication" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/ic_newspaper"
+        android:title="@string/title_news" />
 
     <item
-        android:id="@+id/navigation_settings"
-        android:icon="@drawable/ic_settings_black_24dp"
-        android:title="@string/title_settings" />
+        android:id="@+id/navigation_questionnaire"
+        android:icon="@drawable/ic_quiz_24dp"
+        android:title="@string/title_questionnaire" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_user_circle"
+        android:title="@string/title_profile" />
 
 </menu>

@@ -28,16 +28,6 @@ class HomeFragment : Fragment() {
         homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-
-        val testBtn: Button = root.findViewById(R.id.testBtn)
-        testBtn.setOnClickListener {
-//            openQuestionnairePanel()
-        }
-
         return root
     }
 
@@ -45,13 +35,19 @@ class HomeFragment : Fragment() {
 //        (activity as MainActivity).navigateToFragment(R.id.navigation_questionnaire)
 //    }
 
-    private fun openQuestionnairePanel() {
-        val fragment = QuestionnaireRecFragment()
-        val fragmentManager: FragmentManager = requireActivity().getSupportFragmentManager()
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(((view as ViewGroup).parent as View).id, fragment, "tag")
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+//    private fun openQuestionnairePanel() {
+//        val fragment = QuestionnaireRecFragment()
+//        val fragmentManager: FragmentManager = requireActivity().getSupportFragmentManager()
+//        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(((view as ViewGroup).parent as View).id, fragment, "tag")
+//        fragmentTransaction.addToBackStack(null)
+//        fragmentTransaction.commit()
+//
+//    }
+
+
+    companion object {
+        fun newInstance(): HomeFragment = HomeFragment()
     }
 
 }
