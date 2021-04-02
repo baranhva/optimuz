@@ -73,9 +73,7 @@ class QuestionnaireRecFragment : Fragment(), QuestionnairesAdapter.OnItemClickLi
             Log.d(TAG, "test")
         }
 
-
     }
-
 
     interface DataPassListener {
         fun passData(data: String?)

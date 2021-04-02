@@ -17,7 +17,7 @@ import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import org.json.JSONObject
 
-// TODO: get users medicine
+// TODO: get medicines from backend
 
 class MedicineOverviewFragment : Fragment() {
 
@@ -34,11 +34,13 @@ class MedicineOverviewFragment : Fragment() {
         val dummyData = arrayOf("Ibuprofen", "Paracetamol")
 
         for (medicine in dummyData){
-            // create buttons....
-            val medicineButton: Button = Button(main)
+            val medicineButton = Button(main)
             medicineButton.text = medicine
             Paris.styleBuilder(medicineButton).add(R.style.Widget_MaterialComponents_Button).apply()
             container.addView(medicineButton)
+            medicineButton.setOnClickListener{
+                Log.d("Medicine", medicine)
+            }
         }
 
         addMedicineButton.setOnClickListener {

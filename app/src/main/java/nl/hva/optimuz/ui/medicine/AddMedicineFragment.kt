@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
+import nl.hva.optimuz.State
 import org.json.JSONObject
+import kotlin.jvm.Throws
 
 // TODO: add validation
 
@@ -68,7 +71,7 @@ class AddMedicineFragment : Fragment() {
 
             Log.d("Medicine", body.toString())
 
-            val postRequest = JsonObjectRequest(Request.Method.POST, url, body,
+            val postRequest = object : JsonObjectRequest(Request.Method.POST, url, body,
                     { response ->
                         // do something
                         (activity as MainActivity).navigateToFragment(R.id.navigation_medicine_overview)
@@ -79,7 +82,15 @@ class AddMedicineFragment : Fragment() {
                         Toast.makeText(activity, "That didn't work!", Toast.LENGTH_SHORT).show()
                         isBusyAddingMedicine = false
                     }
-            )
+            ) {
+                @Throws(AuthFailureError::class)
+                override fun getHeaders(): Map<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers.put("Content-Type", "application/json")
+                    headers.put("Authorization", "Bearer ${State.accessToken}")
+                    return headers
+                }
+            }
 
             queue.add(postRequest)
 

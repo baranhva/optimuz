@@ -82,7 +82,6 @@ class MainActivity : AppCompatActivity() {
 
     // handle action bar back button
     override fun onSupportNavigateUp(): Boolean {
-        // TODO: use navigateToFragment() ?
         onBackPressed()
         return true
     }
