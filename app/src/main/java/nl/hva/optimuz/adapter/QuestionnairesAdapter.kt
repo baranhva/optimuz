@@ -17,9 +17,9 @@ class QuestionnairesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionnaireViewHolder {
         val inflator = LayoutInflater.from(parent.context)
-        var recycler = inflator.inflate(R.layout.recycler_questionnaires, parent, false)
+        var recycler = inflator.inflate(R.layout.item_questionnaire, parent, false)
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_questionnaires, parent, false)
+            .inflate(R.layout.item_questionnaire, parent, false)
 
         return QuestionnaireViewHolder(itemView)
     }

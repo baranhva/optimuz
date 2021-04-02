@@ -45,7 +45,7 @@ class QuestionnaireRecFragment : Fragment(), QuestionnairesAdapter.OnItemClickLi
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.questionnaire_rec_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_questionnaire_rec, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
