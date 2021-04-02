@@ -18,6 +18,9 @@ import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
+import nl.hva.optimuz.ui.home.HomeFragment
+import nl.hva.optimuz.ui.register.RegisterFragment
+import nl.hva.optimuz.ui.setup.SetupFragment
 import org.json.JSONObject
 
 class LoginFragment : Fragment() {
@@ -37,11 +40,12 @@ class LoginFragment : Fragment() {
             val email = root.findViewById<EditText>(R.id.login_email).text.toString()
             val password = root.findViewById<EditText>(R.id.login_password).text.toString()
 
-            performLogin(email, password)
+            performLoginWithoutBackend(email, password)
         }
 
         switchButton.setOnClickListener {
-            main.navigateToFragment(R.id.navigation_register)
+            val registerFragment = RegisterFragment.newInstance()
+            main.openFragment(registerFragment)
         }
 
         return root
@@ -49,37 +53,39 @@ class LoginFragment : Fragment() {
 
     private var isBusyLoggingIn = false
 
-    private fun performLogin(email: String, password: String) {
-        if (!isBusyLoggingIn) {
-            isBusyLoggingIn = true
-
-            val queue = Volley.newRequestQueue(getActivity()?.applicationContext)
-            val url = Configuration.URL + "/auth/login"
-            val body = JSONObject()
-            body.put("email", email)
-            body.put("password", password)
-
-            val postRequest = JsonObjectRequest(Request.Method.POST, url, body,
-                { response ->
-                    State.accessToken = response.getString("accessToken")
-                    State.refreshToken = response.getString("refreshToken")
-                    State.loggedIn = true
-                    findNavController().popBackStack()
-                    (activity as MainActivity).navigateToFragment(R.id.navigation_home)
-                    isBusyLoggingIn = false
-                },
-                { error ->
-                    Log.e("MyActivity", "LOGIN", error)
-                    Toast.makeText(activity, "That didn't work!", Toast.LENGTH_SHORT).show()
-                    isBusyLoggingIn = false
-                }
-            )
-
-            queue.add(postRequest)
-        } else {
-            Log.d("Login", "Already busy with logging in")
-        }
-    }
+//    private fun performLogin(email: String, password: String) {
+//        if (!isBusyLoggingIn) {
+//            isBusyLoggingIn = true
+//
+//            val queue = Volley.newRequestQueue(getActivity()?.applicationContext)
+//            val url = Configuration.URL + "/auth/login"
+//            val body = JSONObject()
+//            body.put("email", email)
+//            body.put("password", password)
+//
+//            val postRequest = JsonObjectRequest(Request.Method.POST, url, body,
+//                { response ->
+//                    State.accessToken = response.getString("accessToken")
+//                    State.refreshToken = response.getString("refreshToken")
+//                    State.loggedIn = true
+//                    findNavController().popBackStack()
+//                    val homeFragment = HomeFragment.newInstance()
+//                    val main = (activity as MainActivity)
+//                    main.openFragment(homeFragment)
+//                    isBusyLoggingIn = false
+//                },
+//                { error ->
+//                    Log.e("MyActivity", "LOGIN", error)
+//                    Toast.makeText(activity, "That didn't work!", Toast.LENGTH_SHORT).show()
+//                    isBusyLoggingIn = false
+//                }
+//            )
+//
+//            queue.add(postRequest)
+//        } else {
+//            Log.d("Login", "Already busy with logging in")
+//        }
+//    }
 
     private fun performLoginWithoutBackend(email: String, password: String) {
         val main = (activity as MainActivity)
@@ -87,14 +93,20 @@ class LoginFragment : Fragment() {
         if (email == "email" && password == "pass") {
             State.loggedIn = true
             if (false) { // if new user...
-                main.navigateToFragment(R.id.navigation_setup)
+                val setupFragment = SetupFragment.newInstance()
+                main.openFragment(setupFragment)
             } else {
-                findNavController().popBackStack(R.id.navigation_login, true)
-                main.navigateToFragment(R.id.navigation_home)
+//                findNavController().popBackStack(R.id.navigation_login, true)
+                val homeFragment = HomeFragment.newInstance()
+                main.openFragment(homeFragment)
             }
         } else {
 //            feedback.text = "Invalid email/password combination"
         }
+    }
+
+    companion object {
+        fun newInstance(): LoginFragment = LoginFragment()
     }
 
 

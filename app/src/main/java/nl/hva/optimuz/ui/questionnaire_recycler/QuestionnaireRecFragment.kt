@@ -1,6 +1,5 @@
 package nl.hva.optimuz.ui.questionnaire_recycler
 
-import android.R.attr.data
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -15,18 +14,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.questionnaire_rec_fragment.*
 import nl.hva.optimuz.R
-import nl.hva.optimuz.adapater.QuestionnairesAdapter
+import nl.hva.optimuz.adapter.QuestionnairesAdapter
 import nl.hva.optimuz.models.Question
 import nl.hva.optimuz.models.Questionnaire
 import nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment
+import nl.hva.optimuz.ui.setup.SetupFragment
 
 
 class QuestionnaireRecFragment : Fragment(), QuestionnairesAdapter.OnItemClickListener {
-
-    companion object {
-        fun newInstance() = QuestionnaireRecFragment()
-    }
-
 
     override fun onItemClick(id: Int) {
         Toast.makeText(getActivity(), "Item $id clicked", Toast.LENGTH_SHORT).show()
@@ -79,6 +74,10 @@ class QuestionnaireRecFragment : Fragment(), QuestionnairesAdapter.OnItemClickLi
 
     interface DataPassListener {
         fun passData(data: String?)
+    }
+
+    companion object {
+        fun newInstance(): QuestionnaireRecFragment = QuestionnaireRecFragment()
     }
 
 

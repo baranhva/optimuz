@@ -16,13 +16,12 @@ import com.android.volley.toolbox.Volley
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
+import nl.hva.optimuz.ui.home.HomeFragment
+import nl.hva.optimuz.ui.login.LoginFragment
+import nl.hva.optimuz.ui.questionnaire.QuestionnaireFragment
 import org.json.JSONObject
 
 class RegisterFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = RegisterFragment()
-    }
 
     private lateinit var viewModel: RegisterViewModel
 
@@ -45,7 +44,8 @@ class RegisterFragment : Fragment() {
         }
 
         switchButton.setOnClickListener{
-            main.navigateToFragment(R.id.navigation_login)
+            val homeFragment = HomeFragment.newInstance()
+            main.openFragment(homeFragment)
         }
 
         return root
@@ -63,7 +63,8 @@ class RegisterFragment : Fragment() {
         val postRequest = JsonObjectRequest(Request.Method.POST, url, body,
                 { response ->
                     Toast.makeText(activity, "Successfully created!", Toast.LENGTH_SHORT).show()
-                    (activity as MainActivity).navigateToFragment(R.id.navigation_login)
+                    val loginFragment = LoginFragment.newInstance()
+                    (activity as MainActivity).openFragment(loginFragment)
                 },
                 { error ->
                     Log.e("MyActivity", "REGISTER", error)
@@ -78,6 +79,11 @@ class RegisterFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+
+    companion object {
+        fun newInstance(): RegisterFragment = RegisterFragment()
     }
 
 }

@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">OPTIMUZ</string>
+    <string name="app_name">Optimuz Health</string>
+
     <string name="title_home">Home</string>
-    <string name="title_info">Info</string>
-    <string name="title_reminders">Reminders</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_settings">Settings</string>
+    <string name="title_medication">Medication</string>
+    <string name="title_news">Articles</string>
+    <string name="title_questionnaire">Questionnaire</string>
+    <string name="title_profile">Profile</string>
+
     <string name="login_button">Login</string>
     <string name="login_heading">Login</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -17,13 +19,12 @@
     <string name="logout_button">Logout</string>
     <string name="account_button">My Account</string>
     <string name="register_heading">Register</string>
-    <string name="title_medication">Medication</string>
+
 
     <string name="fa_icon_areachart">&#xf1fe;</string>
     <string name="fa_icon_piechart">&#xf200;</string>
     <string name="fa_icon_linechart">&#xf201;</string>
-    <string name="title_news">Articles</string>
-    <string name="title_questionnaire">Questionnaire</string>
-    <string name="title_profile">Profile</string>
+
+
 
 </resources>
