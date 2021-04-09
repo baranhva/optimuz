@@ -11,10 +11,12 @@ import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.fragment_add_medicine.*
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
 import nl.hva.optimuz.State
+import nl.hva.optimuz.ui.register.RegisterFragment
 import org.json.JSONObject
 import kotlin.jvm.Throws
 
@@ -74,7 +76,7 @@ class AddMedicineFragment : Fragment() {
             val postRequest = object : JsonObjectRequest(Request.Method.POST, url, body,
                     { response ->
                         // do something
-                        (activity as MainActivity).navigateToFragment(R.id.navigation_medicine_overview)
+                        (activity as MainActivity).openFragment(MedicineOverviewFragment.newInstance())
                         isBusyAddingMedicine = false
                     },
                     { error ->
@@ -99,6 +101,11 @@ class AddMedicineFragment : Fragment() {
         }
 
     }
+
+    companion object {
+        fun newInstance(): AddMedicineFragment = AddMedicineFragment()
+    }
+
 
 }
 

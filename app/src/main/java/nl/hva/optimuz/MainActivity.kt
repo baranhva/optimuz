@@ -8,7 +8,9 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import nl.hva.optimuz.ui.account.AccountFragment
 import nl.hva.optimuz.ui.home.HomeFragment
+import nl.hva.optimuz.ui.medicine.MedicineOverviewFragment
 import nl.hva.optimuz.ui.questionnaire_recycler.QuestionnaireRecFragment
 
 
@@ -18,27 +20,25 @@ class MainActivity : AppCompatActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    val homeFragment = HomeFragment.newInstance()
-                    openFragment(homeFragment)
+                    openFragment(HomeFragment.newInstance())
                     return@OnNavigationItemSelectedListener true
                 }
-//                R.id.navigation_medication -> {
-//                    openFragment(MedicationFragment.newInstance("", ""))
-//                    return@OnNavigationItemSelectedListener true
-//                }
+                R.id.navigation_medication -> {
+                    openFragment(MedicineOverviewFragment.newInstance())
+                    return@OnNavigationItemSelectedListener true
+                }
 //                R.id.navigation_news -> {
 //                    openFragment(NewsFragment.newInstance("", ""))
 //                    return@OnNavigationItemSelectedListener true
 //                }
                 R.id.navigation_questionnaire -> {
-                    val questionnaireRecFragment = QuestionnaireRecFragment.newInstance()
-                    openFragment(questionnaireRecFragment)
+                    openFragment(QuestionnaireRecFragment.newInstance())
                     return@OnNavigationItemSelectedListener true
                 }
-//                R.id.navigation_profile -> {
-//                    openFragment(ProfileFragment.newInstance("", ""))
-//                    return@OnNavigationItemSelectedListener true
-//                }
+                R.id.navigation_profile -> {
+                    openFragment(AccountFragment.newInstance())
+                    return@OnNavigationItemSelectedListener true
+                }
             }
             false
         }

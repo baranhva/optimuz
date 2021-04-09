@@ -44,8 +44,7 @@ class RegisterFragment : Fragment() {
         }
 
         switchButton.setOnClickListener{
-            val homeFragment = HomeFragment.newInstance()
-            main.openFragment(homeFragment)
+            main.openFragment(HomeFragment.newInstance())
         }
 
         return root

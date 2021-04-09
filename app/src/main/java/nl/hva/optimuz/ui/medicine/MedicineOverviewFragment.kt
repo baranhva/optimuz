@@ -15,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import nl.hva.optimuz.Configuration
 import nl.hva.optimuz.MainActivity
 import nl.hva.optimuz.R
+import nl.hva.optimuz.ui.register.RegisterFragment
 import org.json.JSONObject
 
 // TODO: get medicines from backend
@@ -44,10 +45,14 @@ class MedicineOverviewFragment : Fragment() {
         }
 
         addMedicineButton.setOnClickListener {
-            main.navigateToFragment(R.id.navigation_add_medicine)
+            main.openFragment(AddMedicineFragment.newInstance())
         }
 
         return root
+    }
+
+    companion object {
+        fun newInstance(): MedicineOverviewFragment = MedicineOverviewFragment()
     }
 
 }

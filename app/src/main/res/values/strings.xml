@@ -18,6 +18,10 @@
     <string name="account_button">My account</string>
     <string name="register_heading">Register</string>
     <string name="medicine_button">my medicines</string>
+    <string name="title_medication">Medication</string>
+    <string name="title_news">News</string>
+    <string name="title_questionnaire">Questionnaire</string>
+    <string name="title_profile">Profile</string>
     <!-- https://studyskills.southwales.ac.uk/maths/mathematics-learning-resources/maths-topic-locator-numbers/units-measurement-drug-calculations/-->
     <string-array name="medicine_units">
         <item>Kg</item>

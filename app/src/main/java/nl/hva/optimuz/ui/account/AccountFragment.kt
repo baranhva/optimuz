@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import nl.hva.optimuz.Account
 import nl.hva.optimuz.R
+import nl.hva.optimuz.ui.register.RegisterFragment
 
 class AccountFragment : Fragment() {
 
@@ -35,6 +36,10 @@ class AccountFragment : Fragment() {
         })
 
         return root
+    }
+
+    companion object {
+        fun newInstance(): AccountFragment = AccountFragment()
     }
 
 }
